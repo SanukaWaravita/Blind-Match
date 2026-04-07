@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projects | The Academic Atelier</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#48e5d0",
+                    "surface-container-highest": "#dde3e7",
+                    "on-surface": "#2d3337",
+                    "on-primary-fixed": "#00255b",
+                    "tertiary": "#006b60",
+                    "surface-variant": "#dde3e7",
+                    "on-secondary-fixed-variant": "#5a3bdd",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#5e40e0",
+                    "on-secondary-fixed-variant": "#5a3bdd",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#5e40e0",
+                    "on-primary-fixed-variant": "#004195",
+                    "primary-fixed": "#a6c0ff",
+                    "on-error-container": "#65000b",
+                    "primary-container": "#a6c0ff",
+                    "tertiary-fixed": "#5bf4de",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#3d08c1",
+                    "on-secondary-container": "#502ed3",
+                    "tertiary-container": "#5bf4de",
+                    "on-tertiary-fixed-variant": "#006358",
+                    "primary": "#005ac8",
+                    "on-primary": "#f9f8ff",
+                    "error-container": "#f56965",
+                    "inverse-surface": "#0b0f10",
+                    "background": "#f7f9fb",
+                    "secondary-dim": "#5130d4",
+                    "secondary-fixed-dim": "#d7ceff",
+                    "outline-variant": "#acb3b7",
+                    "on-tertiary": "#e2fff8",
+                    "inverse-on-surface": "#9a9d9f",
+                    "surface-container": "#eaeef1",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-container": "#00594f",
+                    "surface-tint": "#005ac8",
+                    "surface-dim": "#d3dbdf",
+                    "on-primary-container": "#003984",
+                    "on-surface-variant": "#596063",
+                    "secondary-container": "#e5deff",
+                    "inverse-primary": "#518dff",
+                    "error": "#ac3434",
+                    "on-secondary": "#fcf7ff",
+                    "primary-dim": "#004eb0",
+                    "primary-fixed-dim": "#91b2ff",
+                    "on-error": "#fff7f6",
+                    "outline": "#757c7f",
+                    "surface-container-high": "#e3e9ec",
+                    "on-tertiary-fixed": "#00443c",
+                    "secondary-fixed": "#e5deff",
+                    "on-background": "#2d3337",
+                    "tertiary-dim": "#005e54",
+                    "error-dim": "#70030f",
+                    "surface-container-low": "#f1f4f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 z-50 bg-slate-50 dark:bg-slate-950 flex flex-col h-full p-4 space-y-2">
+<div class="flex items-center space-x-3 px-2 py-4 mb-4">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="font-manrope font-extrabold text-blue-700 dark:text-blue-400 text-lg leading-tight">The Atelier</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500">Fluid Scholar v1.0</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter body-md tracking-wide">Dashboard</span>
+</a>
+<!-- Active Tab: Projects -->
+<a class="flex items-center space-x-3 px-4 py-3 text-blue-700 dark:text-blue-300 font-bold bg-blue-50/50 dark:bg-blue-900/20 rounded-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="font-inter body-md tracking-wide">Projects</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-inter body-md tracking-wide">Research</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter body-md tracking-wide">Collaborators</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter body-md tracking-wide">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-200/50">
+<button class="w-full py-3 px-4 mb-4 bg-gradient-to-r from-primary to-primary-dim text-white rounded-xl font-semibold shadow-md flex items-center justify-center space-x-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>New Project</span>
+</button>
+<a class="flex items-center space-x-3 px-4 py-2 text-slate-600 hover:text-primary transition-colors mb-1" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-sm">Help Center</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2 text-slate-600 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-sm">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar (Execution from JSON) -->
+<header class="fixed top-0 right-0 left-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center w-full px-6 py-3 ml-64 max-w-[calc(100%-16rem)]">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-full w-96 group focus-within:bg-white focus-within:shadow-sm transition-all">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full outline-none" placeholder="Search research projects..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 transition-colors rounded-full relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center space-x-3 pl-4 border-l border-slate-200">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-slate-900 leading-none">Dr. Julian Thorne</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Senior Fellow</p>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/10" data-alt="Close-up portrait of a scholarly man with glasses and a friendly expression in a modern bright studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByCp1thUPDfsQQ22W1HwSPNXZHBQseiUxs0-K_PbH7rCAudh1-GFlnmX7ys-q0dlEzAPiIjukZ1WCy7As9j6TfUjByN9aJ9r2EtQpFg3DlMRoYOHo_hqttmKB_8YWBUs-rvVZkPsf4QtxI_cCvncgYQSJxSY2yMndHDgCUAI_Rngj_inG6CBzt-k4k1KtU-KS38y-_KbN31xPUAd1sk8LTZ5fcaSIPRzRi5Sx9KtNIAFMBpZW61wmEot07Uxujp6pCbcE01IfRBcw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-[64px] p-8 min-h-screen bg-surface-container-low">
+<!-- Header Section -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<nav class="flex items-center space-x-2 text-xs font-medium text-slate-400 mb-2">
+<span class="hover:text-primary cursor-pointer">Workspace</span>
+<span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary-dim">Projects</span>
+</nav>
+<h2 class="font-headline headline-md text-slate-900 font-extrabold tracking-tight text-4xl">Project Library</h2>
+<p class="text-on-surface-variant mt-2 max-w-lg">Manage your active research cycles and collaborative endeavors across all departments.</p>
+</div>
+<!-- Filters Area -->
+<div class="flex items-center space-x-3">
+<div class="relative group">
+<select class="appearance-none bg-surface-container-lowest text-on-surface font-medium text-sm px-6 py-3 pr-10 rounded-xl border-none shadow-sm focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer">
+<option>All Departments</option>
+<option>Quantum Physics</option>
+<option>Synthetic Biology</option>
+<option>Neural Ethics</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" data-icon="unfold_more">unfold_more</span>
+</div>
+<div class="relative group">
+<select class="appearance-none bg-surface-container-lowest text-on-surface font-medium text-sm px-6 py-3 pr-10 rounded-xl border-none shadow-sm focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer">
+<option>Status: All</option>
+<option>In Research</option>
+<option>Peer Review</option>
+<option>Archived</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+</section>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Project Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl p-6 shadow-[0px_12px_32px_rgba(0,90,200,0.04)] hover:shadow-[0px_12px_32px_rgba(0,90,200,0.08)] transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-slate-50 rounded-full">
+<span class="material-symbols-outlined text-slate-400" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="mb-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-secondary-container text-on-secondary-container">
+                        Neural Ethics
+                    </span>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-2 group-hover:text-primary transition-colors">Cognitive Mapping v2.0</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6">Investigating the intersection of synthetic memory and human behavioral patterns in virtual environments.</p>
+<div class="mt-auto pt-6 border-t border-slate-50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-tight">Project Momentum</span>
+<span class="text-xs font-bold text-secondary">74%</span>
+</div>
+<div class="w-full h-1.5 bg-secondary-container/30 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim rounded-full" style="width: 74%"></div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex -space-x-2">
+<img alt="Team member" class="w-8 h-8 rounded-full ring-2 ring-white" data-alt="Portrait of a female scientist with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj8MHYvVgJATb0DKjaGzSosXs3Knt9QZm9EFMcWTVTXiR-_kF_my_6yNM3bRCQxYE5IQhHMkRHxZjNl-jrkq_kiR0Uq4zDR__wqba69kykaecWj8oPFO38Td1GbVfD6wUI5CZ1sTRrHb98PssxdR3iWlai-w4xLPt1-sWpGD62tRRU6fHTDUh6awQE1Fx5VmeActH09IJPIQEgMVvjYrgHD3LvLD4ycBNqG-FCynsT-IBHLZAo-NDsSXM3tj_rKKeixqStwm5qzLc"/>
+<img alt="Team member" class="w-8 h-8 rounded-full ring-2 ring-white" data-alt="Portrait of a male researcher in a modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC_kdWiJdHfFqkaLYxPbAGIx2hOjrblKFITYH7fPo94J2U75ZcLfutyMY0tViTYaqZ5T_PYIdoH84rpcnMqEtPO_A5pa2WORKw1faO7CSzTRrsEvikx6BvrhOp_Ae_s0rplR7sMUgNs1vOIUj89GJqwzpl7yzivBDJxGK_ExIO6itJfNgZeDh-GNzANt4xm_YXGqaHc6L4cl6rabs0lFDQLww2H4fXjEM2j-XDAMdFLyJ2qgQnHTIVRSM6O-51MVzz3yr_nnaU1Zk"/>
+<div class="w-8 h-8 rounded-full bg-slate-100 ring-2 ring-white flex items-center justify-center text-[10px] font-bold text-slate-500">+3</div>
+</div>
+<div class="flex items-center space-x-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">In Research</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl p-6 shadow-[0px_12px_32px_rgba(0,90,200,0.04)] hover:shadow-[0px_12px_32px_rgba(0,90,200,0.08)] transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-slate-50 rounded-full">
+<span class="material-symbols-outlined text-slate-400" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="mb-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-primary-container text-on-primary-container">
+                        Quantum Physics
+                    </span>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-2 group-hover:text-primary transition-colors">Singularity Dynamics</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6">A deep dive into sub-atomic particle displacement during high-energy plasma simulations.</p>
+<div class="mt-auto pt-6 border-t border-slate-50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-tight">Project Momentum</span>
+<span class="text-xs font-bold text-secondary">32%</span>
+</div>
+<div class="w-full h-1.5 bg-secondary-container/30 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim rounded-full" style="width: 32%"></div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex -space-x-2">
+<img alt="Team member" class="w-8 h-8 rounded-full ring-2 ring-white" data-alt="Headshot of a man with a beard looking thoughtful" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhOyZ4dduF9mJ7wFhnH_ROEJrBPdP1mRYz8DD4bQUwhuj4uO1YaNjqzQ5j7VHeBSLTNMki9G3xe_-_Yw4a-Kbq-k_P3bdYCMmz8OCXDO8vLizRbv7c9HG1UPAtOv87Ih3-I-iaDd6FJ596pD-I0dHi7PGXTdSBTiNteG2kuhZSK90jJzVPB-qLNhZ4MfukqyKtzGx-Tmz7AqnrtgkYhJ8qENgQphElTw2ctoQ4auN9hPWbLVBT3L2qIw7CbRUx-EsrKECHmMOm6P8"/>
+<div class="w-8 h-8 rounded-full bg-slate-100 ring-2 ring-white flex items-center justify-center text-[10px] font-bold text-slate-500">+1</div>
+</div>
+<div class="flex items-center space-x-1 text-slate-400">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Pending Review</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group bg-surface-container-lowest rounded-xl p-6 shadow-[0px_12px_32px_rgba(0,90,200,0.04)] hover:shadow-[0px_12px_32px_rgba(0,90,200,0.08)] transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-slate-50 rounded-full">
+<span class="material-symbols-outlined text-slate-400" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="mb-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-tertiary-container text-on-tertiary-container">
+                        Synthetic Biology
+                    </span>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-2 group-hover:text-primary transition-colors">Organelle Fabrication</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6">Developing 3D-printable bio-scaffolds for the rapid deployment of complex cellular structures.</p>
+<div class="mt-auto pt-6 border-t border-slate-50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-tight">Project Momentum</span>
+<span class="text-xs font-bold text-secondary">91%</span>
+</div>
+<div class="w-full h-1.5 bg-secondary-container/30 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim rounded-full" style="width: 91%"></div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex -space-x-2">
+<img alt="Team member" class="w-8 h-8 rounded-full ring-2 ring-white" data-alt="Portrait of a young woman with a focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUn2gB_nUFSEhIpVkIKR1tjSv-dKq9SFQR8fZiLEzOyH8E_PxnceJDoyAV9YZUZpYmV9CTkImRzZuN-PxHZzljm2w9__WNAHj92sMpVEEthGmwgAkCp6uDBdRMJU-xG9zTDmdFK-cL2JyKapj3JhwTz4h_dhich0Nex4AvwUwjy5-7irvNYOcYDP5jIx_mHSkcyVanKyIQml6VCq_rJ8XROwi6WrJ_4ABLzlLhAvMN8oQ8sxyBV6gesvuZG9OI0fUdzVBD-exjNi0"/>
+<img alt="Team member" class="w-8 h-8 rounded-full ring-2 ring-white" data-alt="Portrait of an older male scientist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2uo3fcwnNT02oKOfi_eVnsF9qu3GfjMySHsdu51TkwuQIOnmUUFyKXSWJac12R5FloJbH88Cyc7OUINsGblpgY7OsQ0ln3heotfuh7pLVwFOil1yW1PJeVOISwQa9fPb-ZMXSkKTQdSzGeK0KwVWCEBxdboNa9h-MFRIjK8rh9LPZWEbxX5fFpJHPxbGVf7GS21DbsAparnOY7GDLudeBup_nrHLmnbSJlDhbVaE6dGVcnHRIjaYm5x5svgkU_lPbZzzND91OnU"/>
+</div>
+<div class="flex items-center space-x-1 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="rocket_launch" data-weight="fill" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Deploy Phase</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="group bg-surface-container-lowest rounded-xl p-6 shadow-[0px_12px_32px_rgba(0,90,200,0.04)] hover:shadow-[0px_12px_32px_rgba(0,90,200,0.08)] transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="mb-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-secondary-container text-on-secondary-container">
+                        Neural Ethics
+                    </span>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-2">Ethics of AI Sentience</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6">A framework for determining legal rights for autonomous cognitive agents.</p>
+<div class="mt-auto pt-6 border-t border-slate-50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 tracking-tight">Project Momentum</span>
+<span class="text-xs font-bold text-secondary">50%</span>
+</div>
+<div class="w-full h-1.5 bg-secondary-container/30 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-dim rounded-full" style="width: 50%"></div>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-slate-100 ring-2 ring-white flex items-center justify-center text-[10px] font-bold text-slate-500">?</div>
+</div>
+<div class="flex items-center space-x-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="pause_circle">pause_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">On Hold</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / New Project Placeholder (Editorial Layout) -->
+<div class="flex items-center justify-center border-2 border-dashed border-outline-variant/30 rounded-xl p-12 group hover:border-primary/50 transition-colors cursor-pointer bg-surface/50">
+<div class="text-center">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="add_circle">add_circle</span>
+</div>
+<p class="font-headline font-bold text-slate-900">Initiate New Flow</p>
+<p class="text-xs text-slate-500 mt-1">Ready to start another venture?</p>
+</div>
+</div>
+</div>
+<!-- Pagination / Footer Info -->
+<footer class="mt-16 flex items-center justify-between text-on-surface-variant">
+<p class="text-sm">Showing <span class="font-bold text-on-surface">4</span> of <span class="font-bold text-on-surface">12</span> active projects</p>
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-lowest shadow-sm hover:bg-white transition-colors border border-slate-100">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white shadow-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-lowest shadow-sm hover:bg-white transition-colors border border-slate-100">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-lowest shadow-sm hover:bg-white transition-colors border border-slate-100">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</footer>
+</main>
+</body></html>

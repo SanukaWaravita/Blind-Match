@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Academic Atelier | Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#48e5d0",
+                        "surface-container-highest": "#dde3e7",
+                        "on-surface": "#2d3337",
+                        "on-primary-fixed": "#00255b",
+                        "tertiary": "#006b60",
+                        "surface-variant": "#dde3e7",
+                        "on-secondary-fixed-variant": "#5a3bdd",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#5e40e0",
+                        "on-primary-fixed-variant": "#004195",
+                        "primary-fixed": "#a6c0ff",
+                        "on-error-container": "#65000b",
+                        "primary-container": "#a6c0ff",
+                        "tertiary-fixed": "#5bf4de",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#3d08c1",
+                        "on-secondary-container": "#502ed3",
+                        "tertiary-container": "#5bf4de",
+                        "on-tertiary-fixed-variant": "#006358",
+                        "primary": "#005ac8",
+                        "on-primary": "#f9f8ff",
+                        "error-container": "#f56965",
+                        "inverse-surface": "#0b0f10",
+                        "background": "#f7f9fb",
+                        "secondary-dim": "#5130d4",
+                        "secondary-fixed-dim": "#d7ceff",
+                        "outline-variant": "#acb3b7",
+                        "on-tertiary": "#e2fff8",
+                        "inverse-on-surface": "#9a9d9f",
+                        "surface-container": "#eaeef1",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-container": "#00594f",
+                        "surface-tint": "#005ac8",
+                        "surface-dim": "#d3dbdf",
+                        "on-primary-container": "#003984",
+                        "on-surface-variant": "#596063",
+                        "secondary-container": "#e5deff",
+                        "inverse-primary": "#518dff",
+                        "error": "#ac3434",
+                        "on-secondary": "#fcf7ff",
+                        "primary-dim": "#004eb0",
+                        "primary-fixed-dim": "#91b2ff",
+                        "on-error": "#fff7f6",
+                        "outline": "#757c7f",
+                        "surface-container-high": "#e3e9ec",
+                        "on-tertiary-fixed": "#00443c",
+                        "secondary-fixed": "#e5deff",
+                        "on-background": "#2d3337",
+                        "tertiary-dim": "#005e54",
+                        "error-dim": "#70030f",
+                        "surface-container-low": "#f1f4f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (The Anchor) -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 z-50 bg-slate-50 dark:bg-slate-950 flex flex-col h-full p-4 space-y-2">
+<div class="flex items-center gap-3 px-2 mb-8 mt-2">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">biotech</span>
+</div>
+<div>
+<h2 class="font-manrope font-extrabold text-blue-700 dark:text-blue-400 text-lg leading-tight">The Atelier</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Fluid Scholar v1.0</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-inter body-md tracking-wide">Dashboard</span>
+</a>
+<!-- Active Tab: Projects -->
+<a class="flex items-center gap-3 px-3 py-2.5 text-blue-700 dark:text-blue-300 font-bold bg-blue-50/50 dark:bg-blue-900/20 rounded-lg transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">folder_open</span>
+<span class="font-inter body-md tracking-wide">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">biotech</span>
+<span class="font-inter body-md tracking-wide">Research</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
+<span class="font-inter body-md tracking-wide">Collaborators</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
+<span class="font-inter body-md tracking-wide">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-200/30">
+<button class="w-full py-3 mb-6 bg-gradient-to-b from-[#4F8CFF] to-[#005ac8] text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg">add</span>
+                New Project
+            </button>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:bg-slate-100 transition-all group" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-inter body-md tracking-wide">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:text-error dark:hover:bg-slate-100 transition-all group" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-inter body-md tracking-wide">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center w-full px-6 py-3 ml-64 max-w-[calc(100%-16rem)]">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Search academic archives..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface">Dr. Julian Vance</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Senior Fellow</p>
+</div>
+<img alt="User profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABaJ67xPLMJeq88uZ157TXQjewxneNUPDZN6e4Boa_q5B35CHVnmgIZShEhLlpBeSkXbUEzktrsqzIE4CNC0oZmTC09m1_CBufHRbNIn2pZ6qS6AcEMEUZ-4ZMWB0J0qMzQCShOVmKMnq3fdlIXFZs19oRpLl5xwqfYSto3sd3PLcauCyIA9Mb5pFVOiD1p3kOqw4HnzfUFexdXv6XwLBUtKITsqU6JzMBkvES9RMtQYZFpWyH6EDSh1BNqKNOLYM2S2LAQPRoLLM"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="mt-16 p-8 flex-1 bg-surface">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex gap-2 text-xs font-medium text-on-surface-variant mb-2 uppercase tracking-widest">
+<span class="hover:text-primary cursor-pointer">Workspace</span>
+<span>/</span>
+<span class="text-primary">Projects</span>
+</nav>
+<h1 class="text-3xl font-extrabold text-on-surface tracking-tight font-manrope">Project Repository</h1>
+</div>
+<div class="flex gap-3">
+<div class="flex bg-surface-container rounded-xl p-1">
+<button class="px-4 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-semibold shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">table_chart</span>
+                            Table
+                        </button>
+<button class="px-4 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+                            Grid
+                        </button>
+</div>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-4 mb-6 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-lg text-sm text-on-surface-variant cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+<span class="font-medium">Status: All</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-lg text-sm text-on-surface-variant cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">person</span>
+<span class="font-medium">Lead: Everyone</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-lg text-sm text-on-surface-variant cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span class="font-medium">Date Range</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="ml-auto flex items-center gap-4">
+<p class="text-xs text-on-surface-variant font-medium">Displaying 24 of 142 projects</p>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        Clear All
+                    </button>
+</div>
+</div>
+<!-- Project Table Container -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest">ID</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest">Project Name</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest">Lead</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest w-48">Progress</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest">Last Updated</th>
+<th class="px-6 py-4 text-[11px] font-extrabold text-on-surface-variant uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Table Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5 text-sm font-bold text-on-surface-variant">#AT-2024-001</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up of scientific laboratory equipment with glowing blue liquid in glassware and soft industrial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArJMFYNXhNZie8-gh7MvG06r4rdSLN4uIQ0LbhPEElXtOAJyFE7W7uUztcb3KqCwvXhybCiOKhmvDPKQ7-PvicigQoWsT3Nh89aqVRh5SCLmz_YXuCfAgGzkd3XBhxkb9rpwvALH2rN0awiadQBxR-Devzk20ybd7A222h_SlYC8Lmvzwsv-XvlGKRhv9IKz0QLruiRgyuRFoOwHJLBRV_KvgftNRlICLZWB6UpfpJPzdSKjoUvfueufOBrjfSfYG1Rekxc0282Us"/>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Quantum Neural Mapping</p>
+<p class="text-xs text-on-surface-variant">Neuro-informatics Division</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Lead profile" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhGT6b1AX8-XciPvIvSEzBaQTgBYeHtBiSWYACUWYNP9R9MrkB3FlTCW87id3XXXqDqnpY8lx9Va3WjdPycKWRLeeQ8o3MD3aq8xqDKSewWY-UgQjf1ECmRnrwEJrmcbWLO6ZY6gAayYuyK-TQEGK5hCf_L-nMmvtBPFhBFertZeAHc2fetc8AjSbPDqNc_xokE5lOjAd_-PvCQo7U3nDVsbVCX2kBDvBEpYcoXP1EUvtLCPvjpsT3rsRR94Lnu36cfqJKxWaYkD4"/>
+<span class="text-sm font-medium text-on-surface">Dr. Sarah Chen</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%] rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-secondary">85%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-tertiary-container text-on-tertiary-container">
+                                    Peer Review
+                                </span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">2h ago</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5 text-sm font-bold text-on-surface-variant">#AT-2024-042</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Abstract visualization of complex geometric data structures floating in a dark minimalist space with purple neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcpsHjunq-nZzQnRmdzrWiHcc-GTOvWmQiSVlzIG3PvAzXNrtlvqP0z-YIH4QIpeLetUMTwfGWBH-cldSxr3dsl2fHYLJi60G36FQZ_cU3S8nZei4snPpvZS-VbP7vrLwz5xPCBroLiqLZ40x0Lk2uQ60VFxtFd4ioZC-b8EKdEREFPPfypYJZSLe8yBIljf7Ttth5RZu2wO5g6s4r21dbn9jRCbS0xttqXqDdIhTdcxcRJjV48C9R3xwYmwshCzSBv0iv_kuIXLw"/>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Fluid Dynamics v2.0</p>
+<p class="text-xs text-on-surface-variant">Computational Physics</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Lead profile" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU7ms-FKD41p6wkj2jl-Kqn3WKuK04tY0ADsDC-f84ZZDydwmIyi1YqIyWwdwxLnTwCFSxJdi08tdx3MPcvLoo9WwE0y-F3uAbMesebdeKBEbr8_Cu3KJBol_fqZ1JC60R3NK8wn_eUns3xJ3EapKT8qZtA5pafT3HohB6YEK5vWrV6zV-OPVM3CzYFqzNR0QEwpExyJ4Ex2V3TOPLP33wDlNqeRCFYYmrFqqQCfAbTjedSD1D6CpJTL_oiUW4n_V3Ws16jZQmQMs"/>
+<span class="text-sm font-medium text-on-surface">Prof. Marcus Thorne</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[32%] rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-primary">32%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary-container text-on-primary-container">
+                                    In Research
+                                </span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Yesterday</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5 text-sm font-bold text-on-surface-variant">#AT-2023-118</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Sophisticated architectural model made of clean white materials on a minimalist wood table with soft sunlight streaming through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz5nUr4PTClAKVfgvKRedx6CRrsWte2MZNGbJOJVQRXqzXsIGUi5HXMB25kvVLqRJRWzEaAwLcOQW3vVydIknd7vRXoDNInTjD8diKTOVqj56OmeMA-uWIWnmMKXZB9ThQakWtglGzMW8M7JVRDr80qhDTIaTp67zm9wT9ZVWWr1lUqRBk2G0jmOQgEoja8uzphamUP4L8_IIylap9_fZEjRmII-o3RaCEIjDhaSBRIFJaUU630OGsefQIlZfZZY-i65XdXfDhBes"/>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Sustainable Urbanism</p>
+<p class="text-xs text-on-surface-variant">Architecture &amp; Design</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Lead profile" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDGf7fsq_zu92FbEkuMiy9tRnIBGRZRv8xhGm2LlNz6RfHKSy7Hfh34RtitIS3SjW_lpUYLSVrQdUx2JR4cxxI1u3F7JBOHo5EIyDlLhA-pZUcRGuohpPmReCRwxTUo5uP36U3KXjrsW6OhNXSQjbGyg-BVRRAqTFZ5QpsRk_7NjlVMeyArsUOzmS3dljcvFssMDrLJrE2KJOdKhJySFf3BGdpRrXb9I5N0s0mm4xNBK3mUBuQsOsqZteVvBa5QnhomHB_vjefgM4"/>
+<span class="text-sm font-medium text-on-surface">Elena Rodriguez</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-fixed-variant w-[100%] rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-on-tertiary-fixed-variant">100%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">
+                                    Archived
+                                </span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5 text-sm font-bold text-on-surface-variant">#AT-2024-009</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="High-tech server room with glowing fiber optic cables and atmospheric blue and green bokeh lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8SOh-sFEk6f11Qrj3PFoVn0Anz4U8a8Tvy__zkDhHqSv14V268x4M1ocDqULxFDB14dE3ZtU9cBI5WpVuogmTS5FCBWCoQYFgKXy_Xl5Ql4xxfIv3N6XVVFxqc_daHdSJTz9pboJKj4gb23gW5gPmRSO5aheQvi1zvQz8GISH86NgcbqCzI7dqKficrkEwHuYE-E7N7TfkngTvRJX3Ii0HzR7sErhGEsZiAr8nW9RBacpxhmyG8nZwXjpeBwPaAuQS06a8gGuHCg"/>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Distributed Ledger Ethics</p>
+<p class="text-xs text-on-surface-variant">Ethics in Computing</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="Lead profile" class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkQ2Q_luSFkB_6Wv53Rke6amkzOzfaEAMQ4borNy22vSJqDEqulOcPB230n1MdZDtQz4RU8qHiVCsSLqNG49dW8GjdVn2Cwa8Z4ky38KbDg0qtA5yxxVI6GN_hA6CptHo1MdiP1XocLLurWHlV7y9RXox9P1ea9iz8yQFkZTx2lUS4W9xAIC9HrU1oGeP9pUBrpjeCdIfqkuHzOD_vAoTgoIMelTFx5XzQPOJV5qVKkXztTI9_pZhQzsJ5WWqvI_sFYOBgl08ekms"/>
+<span class="text-sm font-medium text-on-surface">Jameson Wu</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[64%] rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-secondary">64%</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-surface-container-highest text-on-surface">
+                                    Drafting
+                                </span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">3 days ago</td>
+<td class="px-6 py-5 text-right">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-primary-container/20 rounded-lg transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-low/20">
+<p class="text-xs text-on-surface-variant">
+                        Showing <span class="font-bold text-on-surface">1</span> to <span class="font-bold text-on-surface">10</span> of <span class="font-bold text-on-surface">142</span> results
+                    </p>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant text-xs font-bold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant text-xs font-bold">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-on-surface-variant text-xs">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface-variant text-xs font-bold">15</button>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Insights (Asymmetric Layout) -->
+<div class="mt-12 grid grid-cols-12 gap-6">
+<div class="col-span-12 lg:col-span-8 bg-gradient-to-br from-primary to-primary-dim p-8 rounded-3xl text-on-primary relative overflow-hidden flex flex-col justify-between min-h-[200px]">
+<div class="relative z-10">
+<h3 class="text-2xl font-bold font-manrope mb-2">Annual Research Output</h3>
+<p class="opacity-80 max-w-md text-sm">Your department has increased research output by 24% this quarter. Keep pushing the boundaries of human knowledge.</p>
+</div>
+<div class="mt-8 flex gap-6 relative z-10">
+<div>
+<p class="text-3xl font-black font-manrope">842</p>
+<p class="text-[10px] uppercase tracking-widest font-bold opacity-70">Peer Reviews</p>
+</div>
+<div>
+<p class="text-3xl font-black font-manrope">12</p>
+<p class="text-[10px] uppercase tracking-widest font-bold opacity-70">Published Journals</p>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-6 rounded-3xl flex flex-col justify-between">
+<div>
+<h4 class="font-manrope font-bold text-on-surface mb-4">Upcoming Deadlines</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Grant Proposal Sub.</p>
+<p class="text-xs text-on-surface-variant">Due in 4 hours</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">alarm</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Ethics Committee Review</p>
+<p class="text-xs text-on-surface-variant">Due in 2 days</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">alarm</span>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-2 bg-surface-container-low text-primary font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-surface-container transition-colors">
+                        View All Tasks
+                    </button>
+</div>
+</div>
+</div>
+<!-- Footer Tonal Transition -->
+<footer class="mt-auto bg-surface-container-low px-8 py-6 flex items-center justify-between text-xs text-on-surface-variant font-medium">
+<p>© 2024 The Academic Atelier. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">System Status</a>
+<a class="hover:text-primary" href="#">API Documentation</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+</div>
+</footer>
+</main>
+</body></html>
