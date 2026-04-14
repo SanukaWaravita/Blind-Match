@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-panel">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <span class="eyebrow">Blind-Match PAS</span>
+            <h1 class="display-title">Project approval, simplified.</h1>
+            <div class="d-flex flex-wrap gap-3">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-accent btn-lg">Register</a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-dark btn-lg">Sign in</a>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="detail-grid">
+                <div class="detail-item"><span>Students</span><strong>Submit</strong></div>
+                <div class="detail-item"><span>Supervisors</span><strong>Review</strong></div>
+                <div class="detail-item"><span>Matches</span><strong>Confirm</strong></div>
+                <div class="detail-item"><span>Admin</span><strong>Manage</strong></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mt-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="info-card h-100">
+                <h4>Students</h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-card h-100">
+                <h4>Supervisors</h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-card h-100">
+                <h4>Module Leaders</h4>
+            </div>
+        </div>
+    </div>
+</section>

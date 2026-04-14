@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blind-Match PAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    @{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty;
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString() ?? string.Empty;
+        var isAuthenticated = User.Identity?.IsAuthenticated == true;
+        string roleLabel = User.IsInRole("Admin") ? "Module Leader" : User.IsInRole("Supervisor") ? "Supervisor" : User.IsInRole("Student") ? "Student" : "Guest";
+        Func<string, string, string> navClass = (controller, action) =>
+            currentController == controller && (string.IsNullOrEmpty(action) || currentAction == action) ? "nav-tile active" : "nav-tile";
+    }
+
+    <div class="app-shell">
+        <div class="shell-backdrop"></div>
+        <header class="topbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <div class="topbar-inner">
+                    <div class="d-flex align-items-center gap-3">
+                        @if (isAuthenticated)
+                        {
+                            <button class="sidebar-toggle d-lg-none" type="button" data-sidebar-toggle="appSidebar" aria-label="Toggle navigation">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        }
+                        <a class="navbar-brand app-brand" asp-controller="Home" asp-action="Index">
+                            <span class="brand-mark">BM</span>
+                            <span>
+                                <strong>Blind-Match PAS</strong>
+                                <small>@roleLabel</small>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="topbar-actions">
+                        <div class="header-search">
+                            <i class="bi bi-search"></i>
+                            <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." />
+                        </div>
+                        @if (isAuthenticated)
+                        {
+                            <div class="profile-chip">
+                                <span class="profile-avatar">@((User.Identity?.Name ?? "U")[0].ToString().ToUpperInvariant())</span>
+                                <div>
+                                    <strong>@(User.Identity?.Name ?? "User")</strong>
+                                    <small>@roleLabel access</small>
+                                </div>
+                            </div>
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="mb-0">
+                                @Html.AntiForgeryToken()
+                                <button class="btn btn-outline-light btn-sm px-3">Sign out</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-light btn-sm px-3" asp-controller="Account" asp-action="Login">Sign in</a>
+                            <a class="btn btn-light btn-sm px-3" asp-controller="Account" asp-action="Register">Register</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="shell-frame">
+            @if (isAuthenticated)
+            {
+                <aside class="app-sidebar" id="appSidebar">
+                    <div class="sidebar-surface">
+                    <div class="sidebar-header">
+                            <h5 class="mb-0">@roleLabel</h5>
+                        </div>
+
+                        <nav class="sidebar-nav">
+                            <div class="nav-group">
+                                <span class="nav-group-title">General</span>
+                                <a class="@navClass("Home", "Index")" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i><span>Home</span></a>
+                                <a class="@navClass("Home", "About")" asp-controller="Home" asp-action="About"><i class="bi bi-info-circle"></i><span>About</span></a>
+                            </div>
+
+                            @if (User.IsInRole("Student"))
+                            {
+                                <div class="nav-group">
+                                    <span class="nav-group-title">Student</span>
+                                    <a class="@navClass("Student", "Dashboard")" asp-controller="Student" asp-action="Dashboard"><i class="bi bi-grid-1x2"></i><span>Dashboard</span></a>
+                                    <a class="@navClass("Student", "Proposals")" asp-controller="Student" asp-action="Proposals"><i class="bi bi-file-earmark-text"></i><span>My Proposals</span></a>
+                                    <a class="@navClass("Student", "CreateProposal")" asp-controller="Student" asp-action="CreateProposal"><i class="bi bi-plus-square"></i><span>Create Proposal</span></a>
+                                    <a class="@navClass("Student", "TrackStatus")" asp-controller="Student" asp-action="TrackStatus"><i class="bi bi-activity"></i><span>Track Status</span></a>
+                                    <a class="@navClass("Student", "Profile")" asp-controller="Student" asp-action="Profile"><i class="bi bi-person-badge"></i><span>Profile</span></a>
+                                </div>
+                            }
+
+                            @if (User.IsInRole("Supervisor"))
+                            {
+                                <div class="nav-group">
+                                    <span class="nav-group-title">Supervisor</span>
+                                    <a class="@navClass("Supervisor", "Dashboard")" asp-controller="Supervisor" asp-action="Dashboard"><i class="bi bi-columns-gap"></i><span>Dashboard</span></a>
+                                    <a class="@navClass("Supervisor", "BrowseProposals")" asp-controller="Supervisor" asp-action="BrowseProposals"><i class="bi bi-search"></i><span>Browse Proposals</span></a>
+                                    <a class="@navClass("Supervisor", "InterestedProposals")" asp-controller="Supervisor" asp-action="InterestedProposals"><i class="bi bi-bookmark-heart"></i><span>Interested</span></a>
+                                    <a class="@navClass("Supervisor", "MatchedStudents")" asp-controller="Supervisor" asp-action="MatchedStudents"><i class="bi bi-people"></i><span>Matches</span></a>
+                                    <a class="@navClass("Supervisor", "Expertise")" asp-controller="Supervisor" asp-action="Expertise"><i class="bi bi-journal-richtext"></i><span>Expertise</span></a>
+                                </div>
+                            }
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="nav-group">
+                                    <span class="nav-group-title">Administration</span>
+                                    <a class="@navClass("Admin", "Dashboard")" asp-controller="Admin" asp-action="Dashboard"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+                                    <a class="@navClass("Admin", "Users")" asp-controller="Admin" asp-action="Users"><i class="bi bi-person-gear"></i><span>Users</span></a>
+                                    <a class="@navClass("Admin", "ResearchAreas")" asp-controller="Admin" asp-action="ResearchAreas"><i class="bi bi-diagram-3"></i><span>Research Areas</span></a>
+                                    <a class="@navClass("Admin", "Proposals")" asp-controller="Admin" asp-action="Proposals"><i class="bi bi-folder2-open"></i><span>Proposals</span></a>
+                                    <a class="@navClass("Admin", "Matches")" asp-controller="Admin" asp-action="Matches"><i class="bi bi-link-45deg"></i><span>Matches</span></a>
+                                    <a class="@navClass("Admin", "Reports")" asp-controller="Admin" asp-action="Reports"><i class="bi bi-graph-up-arrow"></i><span>Reports</span></a>
+                                    <a class="@navClass("Admin", "AuditLog")" asp-controller="Admin" asp-action="AuditLog"><i class="bi bi-clock-history"></i><span>Audit Log</span></a>
+                                </div>
+                            }
+                        </nav>
+
+                    </div>
+                </aside>
+            }
+
+            <main class="main-content @(isAuthenticated ? "with-sidebar" : "public-shell")">
+                <div class="container-fluid px-3 px-lg-4 py-4">
+                    <partial name="_AlertsPartial" />
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+
+        <footer class="footer-panel">
+            <div class="container-fluid px-3 px-lg-4 py-3 d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-2">
+                <div><strong>Blind-Match PAS</strong></div>
+                <div class="text-muted small text-lg-end">ASP.NET Core MVC</div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
