@@ -1,0 +1,92 @@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="auth-split">
+    <div class="auth-aside">
+        <span class="eyebrow text-white">Join the Platform</span>
+        <h2>Create a coursework-ready account</h2>
+        <p>Use student registration to submit project ideas or supervisor registration to review anonymized proposals by expertise area.</p>
+        <div class="detail-grid mt-4">
+            <div class="detail-item">
+                <span>Student</span>
+                <strong>Submit, track, and reveal only after match</strong>
+            </div>
+            <div class="detail-item">
+                <span>Supervisor</span>
+                <strong>Review blind proposals with filtered expertise</strong>
+            </div>
+        </div>
+    </div>
+    <div class="auth-card">
+        <span class="eyebrow">New Account</span>
+        <h1>Create your Blind-Match PAS account</h1>
+        <form asp-action="Register" method="post" class="row g-3" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-6">
+                <label asp-for="FullName" class="form-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Role" class="form-label"></label>
+                <select asp-for="Role" class="form-select" id="roleSelector">
+                    <option value="Student">Student</option>
+                    <option value="Supervisor">Supervisor</option>
+                </select>
+            </div>
+            <div class="col-md-4 student-only">
+                <label asp-for="StudentIdNumber" class="form-label"></label>
+                <input asp-for="StudentIdNumber" class="form-control" />
+                <span asp-validation-for="StudentIdNumber" class="text-danger small"></span>
+            </div>
+            <div class="col-md-4 supervisor-only d-none">
+                <label asp-for="EmployeeId" class="form-label"></label>
+                <input asp-for="EmployeeId" class="form-control" />
+                <span asp-validation-for="EmployeeId" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Department" class="form-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ContactNumber" class="form-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger small"></span>
+            </div>
+            <div class="col-md-6 student-only">
+                <label asp-for="ProjectOwnershipType" class="form-label"></label>
+                <select asp-for="ProjectOwnershipType" class="form-select" asp-items="Html.GetEnumSelectList<ProjectOwnershipType>()"></select>
+            </div>
+            <div class="col-12 supervisor-only d-none">
+                <label asp-for="Bio" class="form-label"></label>
+                <textarea asp-for="Bio" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Bio" class="text-danger small"></span>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-accent py-3 px-4">Create Account</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
