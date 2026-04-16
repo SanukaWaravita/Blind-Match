@@ -1,0 +1,61 @@
+@model StudentDashboardViewModel
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<div class="split-hero">
+    <div class="page-header-card">
+        <span class="eyebrow">Student Workspace</span>
+        <h1>@Model.StudentName</h1>
+        <p class="mb-0">Track submissions, proposal status, and finalized supervisor allocations from one polished workspace.</p>
+    </div>
+    <div class="panel-card">
+        <div class="section-heading">
+            <span class="eyebrow">Focus</span>
+            <h2 class="h4">Current academic workflow</h2>
+            <p>Stay on top of what still needs review and what has already been allocated.</p>
+        </div>
+        <div class="detail-grid">
+            <div class="detail-item"><span>Status Window</span><strong>@Model.PendingCount proposal(s) still in the pipeline</strong></div>
+            <div class="detail-item"><span>Reveal</span><strong>@Model.MatchedCount confirmed supervisor allocation(s)</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mt-1">
+    <div class="col-md-4"><div class="metric-card"><span>Total Proposals</span><strong>@Model.ProposalCount</strong></div></div>
+    <div class="col-md-4"><div class="metric-card"><span>Active Pipeline</span><strong>@Model.PendingCount</strong></div></div>
+    <div class="col-md-4"><div class="metric-card"><span>Confirmed Matches</span><strong>@Model.MatchedCount</strong></div></div>
+</div>
+
+<div class="panel-card mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Recent proposals</h3>
+        <a asp-action="CreateProposal" class="btn btn-accent btn-sm">New Proposal</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Research Area</th>
+                    <th>Status</th>
+                    <th>Supervisor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var proposal in Model.Proposals)
+            {
+                <tr>
+                    <td>@proposal.Title</td>
+                    <td>@proposal.ResearchArea</td>
+                    <td><span class="badge @BlindMatchPAS.Helpers.StatusBadgeHelper.GetBadgeClass(proposal.Status)">@proposal.Status</span></td>
+                    <td>@(proposal.SupervisorName ?? "Not revealed")</td>
+                    <td><a asp-action="ProposalDetails" asp-route-id="@proposal.Id" class="btn btn-sm btn-outline-dark">View</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

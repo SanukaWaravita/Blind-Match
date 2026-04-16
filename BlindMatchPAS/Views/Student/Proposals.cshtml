@@ -1,0 +1,43 @@
+@model IEnumerable<ProjectProposal>
+@{
+    ViewData["Title"] = "My Proposals";
+}
+
+<div class="toolbar-title">
+    <div>
+        <span class="eyebrow">My Work</span>
+        <h1 class="mb-1">Project proposals</h1>
+        <p>Monitor all submissions and open any proposal for its latest state and reveal details.</p>
+    </div>
+    <a asp-action="CreateProposal" class="btn btn-accent">Create Proposal</a>
+</div>
+
+<div class="panel-card">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Area</th>
+                    <th>Status</th>
+                    <th>Submitted</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var proposal in Model)
+            {
+                <tr>
+                    <td>@proposal.Title</td>
+                    <td>@proposal.ResearchArea.Name</td>
+                    <td><span class="badge @BlindMatchPAS.Helpers.StatusBadgeHelper.GetBadgeClass(proposal.Status)">@proposal.Status</span></td>
+                    <td>@proposal.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</td>
+                    <td class="text-end">
+                        <a asp-action="ProposalDetails" asp-route-id="@proposal.Id" class="btn btn-sm btn-outline-dark">Details</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

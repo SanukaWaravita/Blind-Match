@@ -1,0 +1,64 @@
+@model ProjectProposal
+@{
+    ViewData["Title"] = "Proposal Details";
+    var activeMatch = ViewBag.ActiveMatch as MatchRecord;
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Proposal Details</span>
+    <h1>@Model.Title</h1>
+    <p class="mb-0">Status: <span class="badge @BlindMatchPAS.Helpers.StatusBadgeHelper.GetBadgeClass(Model.Status)">@Model.Status</span></p>
+</div>
+
+<div class="row g-4 mt-1">
+    <div class="col-lg-8">
+        <div class="panel-card">
+            <h3>Proposal content</h3>
+            <div class="detail-grid mb-4">
+                <div class="detail-item"><span>Research Area</span><strong>@Model.ResearchArea.Name</strong></div>
+                <div class="detail-item"><span>Created</span><strong>@Model.CreatedAt.ToLocalTime().ToString("dd MMM yyyy")</strong></div>
+            </div>
+            <div class="stack-list mb-4">
+                @foreach (var stack in Model.TechnicalStack.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <span class="stack-chip">@stack</span>
+                }
+            </div>
+            <p><strong>Abstract:</strong></p>
+            <p>@Model.Abstract</p>
+            @if (!string.IsNullOrWhiteSpace(Model.AdditionalDescription))
+            {
+                <p><strong>Additional Description:</strong></p>
+                <p>@Model.AdditionalDescription</p>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card">
+            <h3>Actions</h3>
+            @if (!Model.IsMatched && !Model.IsWithdrawn)
+            {
+                <a asp-action="EditProposal" asp-route-id="@Model.Id" class="btn btn-outline-dark w-100 mb-2">Edit Proposal</a>
+                <form asp-action="WithdrawProposal" asp-route-id="@Model.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-outline-danger w-100 confirm-action" data-confirm-message="Withdraw this proposal?">Withdraw Proposal</button>
+                </form>
+            }
+            else
+            {
+                <p class="text-muted mb-0">This proposal is locked because it is either withdrawn or matched.</p>
+            }
+        </div>
+
+        @if (activeMatch is not null)
+        {
+            <div class="panel-card mt-4">
+                <h3>Supervisor reveal</h3>
+                <p><strong>Name:</strong> @activeMatch.SupervisorProfile.User.FullName</p>
+                <p><strong>Email:</strong> @activeMatch.SupervisorProfile.User.Email</p>
+                <p><strong>Department:</strong> @activeMatch.SupervisorProfile.Department</p>
+                <p><strong>Expertise Notes:</strong> @(activeMatch.SupervisorProfile.Bio ?? "No bio provided.")</p>
+            </div>
+        }
+    </div>
+</div>

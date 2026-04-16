@@ -1,0 +1,49 @@
+@model ProposalFormViewModel
+@{
+    ViewData["Title"] = "Edit Proposal";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Proposal Update</span>
+    <h1>Edit proposal</h1>
+    <p class="mb-0">Editing is disabled automatically once the proposal is matched or withdrawn.</p>
+</div>
+
+<div class="panel-card mt-4">
+    <form asp-action="EditProposal" asp-route-id="@Model.Id" method="post" class="row g-3" novalidate>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="Id" type="hidden" />
+        <div class="col-12">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger small"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="ResearchAreaId" class="form-label">Research Area</label>
+            <select asp-for="ResearchAreaId" asp-items="Model.ResearchAreas" class="form-select"></select>
+            <span asp-validation-for="ResearchAreaId" class="text-danger small"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TechnicalStack" class="form-label"></label>
+            <input asp-for="TechnicalStack" class="form-control" />
+            <span asp-validation-for="TechnicalStack" class="text-danger small"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="Abstract" class="form-label"></label>
+            <textarea asp-for="Abstract" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Abstract" class="text-danger small"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="AdditionalDescription" class="form-label"></label>
+            <textarea asp-for="AdditionalDescription" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="AdditionalDescription" class="text-danger small"></span>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-accent">Save Changes</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

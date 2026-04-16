@@ -1,0 +1,63 @@
+@model ProposalFormViewModel
+@{
+    ViewData["Title"] = "Create Proposal";
+}
+
+<div class="split-hero">
+    <div class="page-header-card">
+        <span class="eyebrow">New Submission</span>
+        <h1>Create proposal</h1>
+        <p class="mb-0">Your identity is hidden from supervisors until a confirmed match is recorded.</p>
+    </div>
+    <div class="panel-card">
+        <div class="section-heading">
+            <span class="eyebrow">Submission Guide</span>
+            <h2 class="h4">What supervisors can see first</h2>
+            <p>Only academic content is visible during the blind review stage.</p>
+        </div>
+        <div class="detail-grid">
+            <div class="detail-item"><span>Visible</span><strong>Title, abstract, stack, research area</strong></div>
+            <div class="detail-item"><span>Not Visible</span><strong>Name, email, student ID, group identity</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-card mt-4">
+    <form asp-action="CreateProposal" method="post" class="row g-3" novalidate>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger small"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="ResearchAreaId" class="form-label">Research Area</label>
+            <select asp-for="ResearchAreaId" asp-items="Model.ResearchAreas" class="form-select">
+                <option value="">Select research area</option>
+            </select>
+            <span asp-validation-for="ResearchAreaId" class="text-danger small"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TechnicalStack" class="form-label"></label>
+            <input asp-for="TechnicalStack" class="form-control" />
+            <span asp-validation-for="TechnicalStack" class="text-danger small"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="Abstract" class="form-label"></label>
+            <textarea asp-for="Abstract" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Abstract" class="text-danger small"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="AdditionalDescription" class="form-label"></label>
+            <textarea asp-for="AdditionalDescription" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="AdditionalDescription" class="text-danger small"></span>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-accent">Submit Proposal</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
