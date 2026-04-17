@@ -1,0 +1,69 @@
+@model IEnumerable<ProjectProposal>
+@{
+    ViewData["Title"] = "Browse Proposals";
+    var filter = ViewBag.Filter as ProposalFilterViewModel;
+}
+
+<div class="toolbar-title">
+    <div>
+        <span class="eyebrow">Blind Review</span>
+        <h1 class="mb-1">Anonymous proposals</h1>
+        <p>Filter proposal content by relevance while student identity remains hidden.</p>
+    </div>
+</div>
+
+<div class="filter-toolbar mb-4">
+    <form method="get" class="row g-3 align-items-end">
+        <div class="col-md-3">
+            <input name="Keyword" value="@filter?.Keyword" class="form-control" placeholder="Keyword" />
+        </div>
+        <div class="col-md-3">
+            <select name="ResearchAreaId" class="form-select" asp-items="filter?.ResearchAreas">
+                <option value="">All research areas</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="Status" class="form-select" asp-items="Html.GetEnumSelectList<ProposalStatus>()">
+                <option value="">Any status</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input name="TechnicalStack" value="@filter?.TechnicalStack" class="form-control" placeholder="Tech stack" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-accent w-100">Filter</button>
+        </div>
+    </form>
+</div>
+
+<div class="row g-4">
+@foreach (var proposal in Model)
+{
+    <div class="col-lg-6">
+        <div class="panel-card proposal-card h-100">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                    <div class="anonymous-ribbon static">Identity Hidden</div>
+                    <h3 class="h5 mt-3">@proposal.Title</h3>
+                </div>
+                <span class="badge @BlindMatchPAS.Helpers.StatusBadgeHelper.GetBadgeClass(proposal.Status)">@proposal.Status</span>
+            </div>
+            <p class="text-muted mb-2">@proposal.ResearchArea.Name</p>
+            <p>@proposal.Abstract</p>
+            <div class="stack-list mb-3">
+                @foreach (var stack in proposal.TechnicalStack.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <span class="stack-chip">@stack</span>
+                }
+            </div>
+            <div class="d-flex gap-2">
+                <a asp-action="ProposalDetails" asp-route-id="@proposal.Id" class="btn btn-outline-dark btn-sm">Details</a>
+                <form asp-action="ExpressInterest" asp-route-id="@proposal.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-accent btn-sm">Express Interest</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+</div>

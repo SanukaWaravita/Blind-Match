@@ -1,0 +1,37 @@
+@model IEnumerable<InterestRecord>
+@{
+    ViewData["Title"] = "Interested Proposals";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Interest Queue</span>
+    <h1>Interested proposals</h1>
+</div>
+
+<div class="panel-card mt-4">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Proposal</th>
+                    <th>Research Area</th>
+                    <th>Status</th>
+                    <th>Expressed At</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Proposal.Title</td>
+                    <td>@item.Proposal.ResearchArea.Name</td>
+                    <td>@item.Status</td>
+                    <td>@item.ExpressedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
+                    <td><a asp-action="ConfirmMatch" asp-route-id="@item.ProposalId" class="btn btn-accent btn-sm">Confirm</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

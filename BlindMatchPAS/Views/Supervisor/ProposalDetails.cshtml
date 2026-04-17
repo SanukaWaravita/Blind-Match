@@ -1,0 +1,60 @@
+@model ProjectProposal
+@{
+    ViewData["Title"] = "Proposal Review";
+    var isRevealed = ViewBag.IsRevealed is bool revealed && revealed;
+    var activeMatch = ViewBag.ActiveMatch as MatchRecord;
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Proposal Review</span>
+    <h1>@Model.Title</h1>
+    @if (!isRevealed)
+    {
+        <p class="alert alert-info mb-0">Blind review mode is active. Student identity is intentionally hidden at this stage.</p>
+    }
+</div>
+
+<div class="row g-4 mt-1">
+    <div class="col-lg-8">
+        <div class="panel-card">
+            <div class="detail-grid mb-4">
+                <div class="detail-item"><span>Research Area</span><strong>@Model.ResearchArea.Name</strong></div>
+                <div class="detail-item"><span>Status</span><strong>@Model.Status</strong></div>
+            </div>
+            <div class="stack-list mb-4">
+                @foreach (var stack in Model.TechnicalStack.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <span class="stack-chip">@stack</span>
+                }
+            </div>
+            <p><strong>Abstract:</strong></p>
+            <p>@Model.Abstract</p>
+            @if (!string.IsNullOrWhiteSpace(Model.AdditionalDescription))
+            {
+                <p><strong>Additional Description:</strong></p>
+                <p>@Model.AdditionalDescription</p>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card">
+            <h3>Blind matching</h3>
+            @if (!isRevealed)
+            {
+                <p class="text-muted">You cannot see student name, email, ID number, or group identity until the match is confirmed.</p>
+                <form asp-action="ExpressInterest" asp-route-id="@Model.Id" method="post" class="mb-2">
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-outline-dark w-100">Express Interest</button>
+                </form>
+                <a asp-action="ConfirmMatch" asp-route-id="@Model.Id" class="btn btn-accent w-100">Confirm Match</a>
+            }
+            else if (activeMatch is not null)
+            {
+                <p><strong>Student:</strong> @activeMatch.Proposal.StudentProfile.User.FullName</p>
+                <p><strong>Email:</strong> @activeMatch.Proposal.StudentProfile.User.Email</p>
+                <p><strong>Department:</strong> @activeMatch.Proposal.StudentProfile.Department</p>
+                <p><strong>Contact:</strong> @activeMatch.Proposal.StudentProfile.ContactNumber</p>
+            }
+        </div>
+    </div>
+</div>

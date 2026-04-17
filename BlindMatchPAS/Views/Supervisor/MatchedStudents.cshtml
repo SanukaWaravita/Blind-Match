@@ -1,0 +1,37 @@
+@model IEnumerable<MatchRecord>
+@{
+    ViewData["Title"] = "Matched Students";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Confirmed Allocations</span>
+    <h1>Matched students</h1>
+</div>
+
+<div class="row g-4 mt-1">
+@foreach (var match in Model)
+{
+    <div class="col-lg-6">
+        <div class="panel-card h-100">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h3 class="h5">@match.Proposal.Title</h3>
+                    <p class="text-muted">@match.Proposal.ResearchArea.Name</p>
+                </div>
+                <span class="badge badge-soft-success">Matched</span>
+            </div>
+            <div class="stack-list mb-3">
+                @foreach (var stack in match.Proposal.TechnicalStack.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <span class="stack-chip">@stack</span>
+                }
+            </div>
+            <p><strong>Student:</strong> @match.Proposal.StudentProfile.User.FullName</p>
+            <p><strong>Email:</strong> @match.Proposal.StudentProfile.User.Email</p>
+            <p><strong>Department:</strong> @match.Proposal.StudentProfile.Department</p>
+            <p><strong>Contact:</strong> @match.Proposal.StudentProfile.ContactNumber</p>
+            <p class="small text-muted mb-0">Matched @match.MatchedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</p>
+        </div>
+    </div>
+}
+</div>
