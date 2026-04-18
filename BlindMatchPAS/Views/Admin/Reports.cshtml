@@ -1,0 +1,66 @@
+@model ReportsViewModel
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Analytics</span>
+    <h1>Reports and summary</h1>
+    <p class="mb-0">A concise academic analytics view for allocation patterns, workload distribution, and proposal volume.</p>
+</div>
+
+<div class="row g-4 mt-1">
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h3>Proposal counts by status</h3>
+            @foreach (var item in Model.ProposalStatusSummary)
+            {
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                    <span>@item.Status</span><strong>@item.Count</strong>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h3>Proposals by area</h3>
+            @foreach (var item in Model.ProposalsByArea)
+            {
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                    <span>@item.Name</span><strong>@item.Count</strong>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h3>Supervisors by department</h3>
+            @foreach (var item in Model.SupervisorsByDepartment)
+            {
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                    <span>@item.Department</span><strong>@item.Count</strong>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="panel-card mt-4">
+    <h3>Recent matches</h3>
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead><tr><th>Proposal</th><th>Student</th><th>Supervisor</th><th>Date</th></tr></thead>
+            <tbody>
+            @foreach (var match in Model.RecentMatches)
+            {
+                <tr>
+                    <td>@match.ProposalTitle</td>
+                    <td>@match.StudentName</td>
+                    <td>@match.SupervisorName</td>
+                    <td>@match.MatchedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

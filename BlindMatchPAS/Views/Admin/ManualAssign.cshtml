@@ -1,0 +1,34 @@
+@model ManualAssignmentViewModel
+@{
+    ViewData["Title"] = "Manual Assignment";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Manual Allocation</span>
+    <h1>Assign supervisor</h1>
+    <p class="text-muted mb-0">@Model.ProposalTitle</p>
+</div>
+
+<div class="panel-card mt-4">
+    <form asp-action="ManualAssign" method="post" class="row g-3">
+        <input asp-for="ProposalId" type="hidden" />
+        <div class="col-md-8">
+            <label asp-for="SupervisorProfileId" class="form-label">Supervisor</label>
+            <select asp-for="SupervisorProfileId" asp-items="Model.Supervisors" class="form-select">
+                <option value="">Select supervisor</option>
+            </select>
+            <span asp-validation-for="SupervisorProfileId" class="text-danger small"></span>
+        </div>
+        <div class="col-md-12">
+            <label asp-for="Notes" class="form-label"></label>
+            <textarea asp-for="Notes" class="form-control"></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-accent">Complete Assignment</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

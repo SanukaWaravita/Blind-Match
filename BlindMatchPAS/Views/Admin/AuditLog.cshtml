@@ -1,0 +1,28 @@
+@model IEnumerable<AuditLog>
+@{
+    ViewData["Title"] = "Audit Log";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Traceability</span>
+    <h1>Audit log</h1>
+</div>
+
+<div class="panel-card mt-4">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead><tr><th>Action</th><th>Entity</th><th>Details</th><th>When</th></tr></thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Action</td>
+                    <td>@item.EntityName #@item.EntityId</td>
+                    <td>@item.Details</td>
+                    <td>@item.Timestamp.ToLocalTime().ToString("dd MMM yyyy HH:mm:ss")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

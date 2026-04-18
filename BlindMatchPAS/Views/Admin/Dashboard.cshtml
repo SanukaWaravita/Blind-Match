@@ -1,0 +1,64 @@
+@model AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="split-hero">
+    <div class="page-header-card">
+        <span class="eyebrow">Module Leader Console</span>
+        <h1>Admin dashboard</h1>
+        <p class="mb-0">Oversight for users, proposals, matches, and recent audit activity across the entire module allocation workflow.</p>
+    </div>
+    <div class="panel-card">
+        <div class="section-heading">
+            <span class="eyebrow">Operational Snapshot</span>
+            <h2 class="h4">Allocation health</h2>
+            <p>Understand the pressure points before intervening in allocations.</p>
+        </div>
+        <div class="detail-grid">
+            <div class="detail-item"><span>Pending Queue</span><strong>@Model.PendingProposals proposal(s)</strong></div>
+            <div class="detail-item"><span>Finalized</span><strong>@Model.MatchedProposals matched or reassigned</strong></div>
+            <div class="detail-item"><span>Exceptions</span><strong>@Model.WithdrawnProposals withdrawn submission(s)</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mt-1">
+    <div class="col-md-4 col-xl-2"><div class="metric-card"><span>Students</span><strong>@Model.TotalStudents</strong></div></div>
+    <div class="col-md-4 col-xl-2"><div class="metric-card"><span>Supervisors</span><strong>@Model.TotalSupervisors</strong></div></div>
+    <div class="col-md-4 col-xl-2"><div class="metric-card"><span>Total Proposals</span><strong>@Model.TotalProposals</strong></div></div>
+    <div class="col-md-4 col-xl-2"><div class="metric-card"><span>Pending</span><strong>@Model.PendingProposals</strong></div></div>
+    <div class="col-md-4 col-xl-2"><div class="metric-card"><span>Matched</span><strong>@Model.MatchedProposals</strong></div></div>
+    <div class="col-md-4 col-xl-2"><div class="metric-card"><span>Withdrawn</span><strong>@Model.WithdrawnProposals</strong></div></div>
+</div>
+
+<div class="row g-4 mt-4">
+    <div class="col-lg-6">
+        <div class="panel-card h-100">
+            <h3>Recent matches</h3>
+            <div class="list-group list-group-flush">
+                @foreach (var match in Model.RecentMatches)
+                {
+                    <div class="list-group-item px-0">
+                        <strong>@match.ProposalTitle</strong>
+                        <div class="text-muted small">@match.StudentName with @match.SupervisorName</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-card h-100">
+            <h3>Recent activity</h3>
+            <div class="list-group list-group-flush">
+                @foreach (var activity in Model.RecentActivity)
+                {
+                    <div class="list-group-item px-0">
+                        <strong>@activity.Action</strong>
+                        <div class="text-muted small">@activity.Details</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

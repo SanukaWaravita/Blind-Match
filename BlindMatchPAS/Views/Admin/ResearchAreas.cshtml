@@ -1,0 +1,44 @@
+@model IEnumerable<ResearchArea>
+@{
+    ViewData["Title"] = "Research Areas";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <span class="eyebrow">Catalog</span>
+        <h1 class="mb-1">Research areas</h1>
+    </div>
+    <a asp-action="CreateResearchArea" class="btn btn-accent">Add Research Area</a>
+</div>
+
+<div class="panel-card">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Active</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var area in Model)
+            {
+                <tr>
+                    <td>@area.Name</td>
+                    <td>@area.Description</td>
+                    <td>@(area.IsActive ? "Yes" : "No")</td>
+                    <td class="text-end">
+                        <a asp-action="EditResearchArea" asp-route-id="@area.Id" class="btn btn-sm btn-outline-dark">Edit</a>
+                        <form asp-action="ToggleResearchArea" asp-route-id="@area.Id" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <button class="btn btn-sm btn-outline-secondary">@((area.IsActive) ? "Disable" : "Enable")</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

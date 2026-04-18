@@ -1,0 +1,77 @@
+@model IEnumerable<UserManagementItemViewModel>
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<div class="toolbar-title">
+    <div>
+        <span class="eyebrow">Administration</span>
+        <h1 class="mb-1">User management</h1>
+        <p>Search, review, activate, and manage accounts across all platform roles.</p>
+    </div>
+    <a asp-action="CreateUser" class="btn btn-accent">Create User</a>
+</div>
+
+<div class="filter-toolbar mb-4">
+    <form method="get" class="row g-3 align-items-end">
+        <div class="col-md-5">
+            <input name="keyword" value="@ViewBag.Keyword" class="form-control" placeholder="Search name, email, or department" />
+        </div>
+        <div class="col-md-3">
+            <select name="role" class="form-select">
+                <option value="">All roles</option>
+                <option value="Student">Student</option>
+                <option value="Supervisor">Supervisor</option>
+                <option value="Admin">Admin</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-accent w-100">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="panel-card">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FullName</td>
+                    <td>@user.Email</td>
+                    <td><span class="stack-chip">@user.Role</span></td>
+                    <td>@user.Department</td>
+                    <td>
+                        @if (user.IsActive)
+                        {
+                            <span class="badge badge-soft-success">Active</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-soft-danger">Inactive</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="EditUser" asp-route-id="@user.UserId" class="btn btn-sm btn-outline-dark">Edit</a>
+                        <form asp-action="ToggleUserActive" asp-route-id="@user.UserId" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <button class="btn btn-sm btn-outline-dark">@((user.IsActive) ? "Deactivate" : "Activate")</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

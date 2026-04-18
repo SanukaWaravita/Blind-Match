@@ -1,0 +1,23 @@
+@model ResearchAreaFormViewModel
+@{
+    ViewData["Title"] = "Edit Research Area";
+}
+
+<div class="page-header-card">
+    <span class="eyebrow">Catalog Management</span>
+    <h1>Edit research area</h1>
+</div>
+
+<div class="panel-card mt-4">
+    <form asp-action="EditResearchArea" method="post" class="row g-3" novalidate>
+        <input asp-for="Id" type="hidden" />
+        <div class="col-md-6"><label asp-for="Name" class="form-label"></label><input asp-for="Name" class="form-control" /><span asp-validation-for="Name" class="text-danger small"></span></div>
+        <div class="col-md-6 d-flex align-items-center"><div class="form-check mt-4"><input asp-for="IsActive" class="form-check-input" /><label asp-for="IsActive" class="form-check-label"></label></div></div>
+        <div class="col-12"><label asp-for="Description" class="form-label"></label><textarea asp-for="Description" class="form-control"></textarea></div>
+        <div class="col-12"><button class="btn btn-accent">Update</button></div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

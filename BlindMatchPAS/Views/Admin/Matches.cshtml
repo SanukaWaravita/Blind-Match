@@ -1,0 +1,41 @@
+@model IEnumerable<AdminMatchViewModel>
+@{
+    ViewData["Title"] = "Match Management";
+}
+
+<div class="toolbar-title">
+    <div>
+        <span class="eyebrow">Allocation Ledger</span>
+        <h1 class="mb-1">Match management</h1>
+        <p>View active and historical allocation decisions with export support for reporting.</p>
+    </div>
+    <a asp-action="ExportMatchesCsv" class="btn btn-outline-dark">Export CSV</a>
+</div>
+
+<div class="panel-card">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Proposal</th>
+                    <th>Student</th>
+                    <th>Supervisor</th>
+                    <th>Matched At</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProposalTitle</td>
+                    <td>@item.StudentName</td>
+                    <td>@item.SupervisorName</td>
+                    <td>@item.MatchedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td>
+                    <td>@(item.IsActive ? "Active" : "Historical")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

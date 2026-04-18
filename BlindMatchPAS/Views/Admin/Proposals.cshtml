@@ -1,0 +1,56 @@
+@model IEnumerable<ProjectProposal>
+@{
+    ViewData["Title"] = "Proposal Oversight";
+    var filter = ViewBag.Filter as ProposalFilterViewModel;
+}
+
+<div class="toolbar-title">
+    <div>
+        <span class="eyebrow">Oversight</span>
+        <h1 class="mb-1">Proposal management</h1>
+        <p>Review all submissions across the platform and intervene when manual allocation is needed.</p>
+    </div>
+</div>
+
+<div class="filter-toolbar mb-4">
+    <form method="get" class="row g-3 align-items-end">
+        <div class="col-md-3"><input name="Keyword" value="@filter?.Keyword" class="form-control" placeholder="Keyword" /></div>
+        <div class="col-md-3"><select name="ResearchAreaId" class="form-select" asp-items="filter?.ResearchAreas"><option value="">Any area</option></select></div>
+        <div class="col-md-2"><select name="Status" class="form-select" asp-items="Html.GetEnumSelectList<ProposalStatus>()"><option value="">Any status</option></select></div>
+        <div class="col-md-2"><input name="TechnicalStack" value="@filter?.TechnicalStack" class="form-control" placeholder="Tech stack" /></div>
+        <div class="col-md-2"><button class="btn btn-accent w-100">Filter</button></div>
+    </form>
+</div>
+
+<div class="panel-card">
+    <div class="table-responsive">
+        <table class="table table-modern align-middle">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Student</th>
+                    <th>Area</th>
+                    <th>Status</th>
+                    <th>Supervisor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var proposal in Model)
+            {
+                var activeMatch = proposal.MatchRecords.FirstOrDefault(x => x.IsActive);
+                <tr>
+                    <td>@proposal.Title</td>
+                    <td>@proposal.StudentProfile.User.FullName</td>
+                    <td>@proposal.ResearchArea.Name</td>
+                    <td><span class="badge @BlindMatchPAS.Helpers.StatusBadgeHelper.GetBadgeClass(proposal.Status)">@proposal.Status</span></td>
+                    <td>@(activeMatch?.SupervisorProfile.User.FullName ?? "Unassigned")</td>
+                    <td class="text-end">
+                        <a asp-action="ManualAssign" asp-route-proposalId="@proposal.Id" class="btn btn-sm btn-outline-dark">Assign</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
